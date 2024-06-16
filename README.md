@@ -2,27 +2,34 @@
 Time feed ATMEGA B/W Word clock with NTP time  
 ![ESP32ToWordClock](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/ac6b3e92-fde4-49cc-915b-91af3d018617)
 
-The Word clock with white 2835 or 3528 LEDs run on a ATMEGA 328 and keeps it time in a DS3231 Module.
-This word clock can receive its time with a DCF77 receiver. But this will not work with clock with brass copper or corten steel word plates.
+The word clock with white 2835 or 3528 LEDs runs on an ATMEGA 328 and keeps time in a DS3231 Module.
+See here: https://github.com/ednieuw/Woordklok-witte-LEDs.
+
+This word clock can receive its time with a DCF77 receiver. But this will not work in a clock with brass copper or corten steel word plates, a bad position or intefering radio waves in the neighbourhood.
 ![woordklokCIMG2963](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/ed78be12-9529-405e-b355-75b00a09bf1c)
 
-The ESP32 used will replace the Bluetooth module on the word clock PCB.
-See here: https://github.com/ednieuw/Woordklok-witte-LEDs
+The ESP32 used will replace the Bluetooth module on the word clock PCB. The ESP32 has Bluetooth and WIFI connectivity adding two new functionalities, namely a web browser page and a NTP time clock that receive time from the internet.
+The time is send regulary to the word clock keeping its time and day light savings correct. 
 
-This code with run on an ESP32 C3 and S3 and probably other boards. 
-The first versions will run on a ESP32-S3-Zero and C3-mini. 
+This code can be used with an ESP32 C3 and S3 and probably other boards. 
+The first versions will run on a ESP32-S3-Zero. Difference between board are often the coding for the LEDs on the board. These LEDs are not essential and can be deleted from the code making the software suitabnle for many boards.
+
 The final version will also be suited for the Arduino nano ESP32. A board that will probably be avaiable for many years after this year 2024
+
 
 # How to use
 - Connect the board, compile for the proper board and upload the code
-- Open the serial terminal and send '%i' (The ESP32 menu only opens when the command are preceded with an % character. Without the % charater the coammand will be send to the Word clock menu)
-- An Information menu will be displayed.
+- Open the serial terminal and send '%i' (The ESP32 menu only opens when the command are preceded with an % character. Without the % charater the coammand will be send to the Word clock menu)<br>
+An Information menu will be displayed.<br>
 - Enter your router SSID name preceded with an 'a'  ( aSSIDNAME )
-- Enter the passwod of the router preceded with a 'b' ( bPASSWORD )
+- Enter the password of the router preceded with a 'b' ( bPASSWORD )
 - Enter a name for your BLE station preceded with a 'c' ( cBLENAME ) 
 - Send a @ to restart the ESP32.
   If all is well the proper time will be printed after a restart and a IP-address other than 0.0.0.0 will be printed in the info menu.
  
+The following will be printed in the serial terminal of the conected PC via the USB port or in the serial app on your phone.
+Search in IOS app store for [BLEserial](https://apps.apple.com/nl/app/bleserial-nrf/id1632235163) or [BLEserial Pro](https://apps.apple.com/nl/app/ble-serial-pro/id1632245655)
+and for Android [Bluetooth terminal](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&pli=1) 
 
 ```
 Serial started
