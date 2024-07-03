@@ -35,8 +35,9 @@ The final version will also be suited for the Arduino nano ESP32. A board that w
 # How to use
 - Select the board you use in the source code. (Remove the // before the board that is used) 
 - Connect the board, check the compile options as noted in the top of the source code, compile for the proper board and upload the code
-- Open the serial terminal and send '%i'<br>
-  (The ESP32 menu only opens when the command are preceded with an % character. Without the % charater the command will be send to the Word clock menu)<br>
+- Open the serial terminal and **send '?i'**<br>
+  (The ESP32 menu only opens when the **command is preceded with an ? character**. <br>
+  Without the questionmark '?' character the command will be send to the Word clock menu)<br>
   An Information menu will be displayed.<br>
 - Enter your router SSID name preceded with an 'a'  ( aSSIDNAME )
 - Enter the password of the router preceded with a 'b' ( bPASSWORD )
