@@ -33,7 +33,11 @@ The final version will also be suited for the Arduino nano ESP32. A board that w
 
 
 # How to use
-- Select the board you use in the source code. (Remove the // before the board that is used) 
+- Select the board you use in the source code. (Remove the // before the board that is used)
+- Change if necesaary the GPIO pins in the setup where the RX and TX pins to the word clock are connected to.
+```
+ Serial1.begin(9600, SERIAL_8N1, 5, 4);    // Serial1.begin(9600, SERIAL_8N1, RX1PIN, TX1PIN);
+```
 - Connect the board, check the compile options as noted in the top of the source code, compile for the proper board and upload the code
 - Open the serial terminal and **send '?i'**<br>
   (The ESP32 menu only opens when the **command is preceded with an ? character**. <br>
