@@ -25,16 +25,17 @@ With a #define in the code a board can be selected before compiling the code for
 //#define ESP32S3_DEV         // ESP32-S3
 #define NanoESP32             // Arduino Nano ESP32
 ``` 
-
-
-The first versions will run on a ESP32-S3-Zero. Difference between board are often the coding for the LEDs on the board. These LEDs are not essential and can be deleted from the code making the software suitabnle for many boards.
-
+Difference between board are the coding for the LEDs on the board. These LEDs are not essential and can be deleted from the code making the software suitabnle for many boards. These codings can be found in the following two subroutines.
+```
+void UpdateStatusLEDs(int Toggle)
+void SetStatusLED(int WW, int CW, int Re, int Gr, int Bl)
+```
 The final version will also be suited for the Arduino nano ESP32. A board that will probably be avaiable for many years after this year 2024
 
 
 # How to use
 - Select the board you use in the source code. (Remove the // before the board that is used)
-- Change if necesaary the GPIO pins in the setup where the RX and TX pins to the word clock are connected to.
+- Modify the GPIO pins in the setup() as needed, where the RX and TX pins connect to the word clock.
 ```
  Serial1.begin(9600, SERIAL_8N1, 5, 4);    // Serial1.begin(9600, SERIAL_8N1, RX1PIN, TX1PIN);
 ```
