@@ -1,5 +1,5 @@
 # ESP32SerialNTP-BLE-Clock
-Time feed ATMEGA B/W Word clock with NTP time  
+Time feed ATMEGA B/W Word clock with NTP time. 
 ![ESP32ToWordClock](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/ac6b3e92-fde4-49cc-915b-91af3d018617)
 
 The word clock with white 2835 or 3528 LEDs runs on an ATMEGA 328 and keeps time in a DS3231 Module.
@@ -9,18 +9,35 @@ This word clock can receive its time with a DCF77 receiver. But this will not wo
 ![woordklokCIMG2963](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/ed78be12-9529-405e-b355-75b00a09bf1c)
 
 The ESP32 used will replace the Bluetooth module on the word clock PCB. The ESP32 has Bluetooth and WIFI connectivity adding two new functionalities, namely a web browser page and a NTP time clock that receive time from the internet.
-The time is send regulary to the word clock keeping its time and day light savings correct. 
+The time is send regulary over the serial port pins in the format Thhmmss to the word clock keeping its time and day light savings correct. 
 
-This code can be used with an ESP32 C3 and S3 and probably other boards. 
+![image](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/a7aacb75-6bb4-4673-abc5-d958b976eb5a)
+ESP32-C3-supermini -- ESp32-S3-Zero -- Arduino Nano ESP32 -- ESP-C3-!2F-Kit 
+
+This code can be used with an ESP32 C3 and S3 and probably other boards.
+
+With a #define in the code a board can be selected before compiling the code for that board.
+
+```
+//#define ESP32C3_SUPERMINI   // ESP32-C3-Supermini
+//#define ESP32S3_ZERO        // ESP32-S3-Zero
+//#define ESP32C3_DEV         // ESP-C3-12F-Kit 
+//#define ESP32S3_DEV         // ESP32-S3
+#define NanoESP32             // Arduino Nano ESP32
+``` 
+
+
 The first versions will run on a ESP32-S3-Zero. Difference between board are often the coding for the LEDs on the board. These LEDs are not essential and can be deleted from the code making the software suitabnle for many boards.
 
 The final version will also be suited for the Arduino nano ESP32. A board that will probably be avaiable for many years after this year 2024
 
 
 # How to use
-- Connect the board, compile for the proper board and upload the code
-- Open the serial terminal and send '%i' (The ESP32 menu only opens when the command are preceded with an % character. Without the % charater the coammand will be send to the Word clock menu)<br>
-An Information menu will be displayed.<br>
+- Select the board you use in the source code. (Remove the // before the board that is used) 
+- Connect the board, check the compile options as noted in the top of the source code, compile for the proper board and upload the code
+- Open the serial terminal and send '%i'<br>
+  (The ESP32 menu only opens when the command are preceded with an % character. Without the % charater the command will be send to the Word clock menu)<br>
+  An Information menu will be displayed.<br>
 - Enter your router SSID name preceded with an 'a'  ( aSSIDNAME )
 - Enter the password of the router preceded with a 'b' ( bPASSWORD )
 - Enter a name for your BLE station preceded with a 'c' ( cBLENAME ) 
