@@ -38,7 +38,7 @@ Because the ESP32-Super mini is especially difficult to solder without destroyin
 I was most happy with a M-F connector Dupont cable and five 90 degree pins soldered to the board 
 
 ![image](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/0785be7a-b2b1-4e4f-80d8-a79bf15664c5)
-Several connector option between the Word clock board and the ESP32-C3 and -S3 mini boards
+Several connector options between the Word clock board and the ESP32-C3 and -S3 mini boards
 
 # How to use
 - Select the board you use in the source code. (Remove the // before the board that is used)
