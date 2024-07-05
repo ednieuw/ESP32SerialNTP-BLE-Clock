@@ -5,14 +5,14 @@ Time feed ATMEGA B/W Word clock with NTP time.
 The word clock with white 2835 or 3528 LEDs runs on an ATMEGA 328 and keeps time in a DS3231 Module.
 See here: https://github.com/ednieuw/Woordklok-witte-LEDs.
 
-This word clock can receive its time with a DCF77 receiver. But this will not work in a clock with brass copper or corten steel word plates, a bad position or intefering radio waves in the neighbourhood.
+This word clock can receive its time with a DCF77 receiver. But this will not work in a clock with brass copper or corten steel word plates, a bad position or interfering radio waves in the neighbourhood.
 ![woordklokCIMG2963](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/ed78be12-9529-405e-b355-75b00a09bf1c)
 
 The ESP32 used will replace the Bluetooth module on the word clock PCB. The ESP32 has Bluetooth and WIFI connectivity adding two new functionalities, namely a web browser page and a NTP time clock that receive time from the internet.
 The time is send regulary over the serial port pins in the format Thhmmss to the word clock keeping its time and day light savings correct. 
 
 ![image](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/a7aacb75-6bb4-4673-abc5-d958b976eb5a)
-ESP32-C3-supermini -- ESp32-S3-Zero -- Arduino Nano ESP32 -- ESP-C3-!2F-Kit 
+ESP32-C3-supermini --- ESp32-S3-Zero --- Arduino Nano ESP32 --- ESP-C3-!2F-Kit 
 
 This code can be used with an ESP32 C3 and S3 and probably other boards.
 
@@ -25,24 +25,27 @@ With a #define in the code a board can be selected before compiling the code for
 //#define ESP32S3_DEV         // ESP32-S3
 #define NanoESP32             // Arduino Nano ESP32
 ``` 
-Difference between board are the coding for the LEDs on the board. These LEDs are not essential and the coding can be  deleted from the code making the software suitable for many boards. These codings can be found in the following two subroutines.
+Differences between the code for the several boards are for the LEDs on the board. These LEDs are not essential and the coding can be  deleted from the code making the software suitable for many boards. These two subroutines control the LEDs.
 ```
 void UpdateStatusLEDs(int Toggle)
 void SetStatusLED(int WW, int CW, int Re, int Gr, int Bl)
 ```
-The final version will also be suited for the Arduino nano ESP32. A board that will probably be avaiable for many years after this year 2024 and my choice to develop further with.
+Version V010 and higher will be suited for the Arduino nano ESP32. A board that will probably be avaiable for many years after this year 2024 and my choice to develop further with.
 
 I made some cables to connect the ESP32-super mini and the ESP32-S3 Zero to the Word clock PCB.
-Because the ESP32-Super mini is especially difficult to solder without destroying them I bought the ESP32-S3 Zero with pins welded to it. When you solder the first 5 pins to 5V, GND, 3V3, GPIO4 and GPIO3 from the bottom there are no tiny parts you can destroy while welding.<br>
+The ESP32-Super mini is difficult to solder pins to it without destroying the unit. The tiny electronic parts near the pin connections melt.<br> 
+When you solder the first 5 pins on the ESP32-C3 super mini to 5V, GND, 3V3, GPIO4 and GPIO3 from the bottom there are no tiny parts you can destroy while welding.<br>
+After several prototypes I was most happy with a M-F Dupont cable and five 90 degree pins soldered to the board. 
 
-I was most happy with a M-F connector Dupont cable and five 90 degree pins soldered to the board 
+The ESP32-S3 Zero from Waveshare with pins welded to it is a good alternative.<br>
+The ESP32-C3-12F is a robust board I have lying around and has probably a stronger WIFI and BLE.
 
 ![image](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/0785be7a-b2b1-4e4f-80d8-a79bf15664c5)
 Several connector options between the Word clock board and the ESP32-C3 and -S3 mini boards
 
 # How to use
-- Select the board you use in the source code. (Remove the // before the board that is used)
-- Modify the GPIO pins in the setup() as needed, where the RX and TX pins connect to the word clock.
+- Select the board you use in the source code. (Remove the // before the board that is used and select only ONE board).
+- The RX and TX pins that are connected to the Word clock and defined here. 
 ```
                          #ifdef ESP32C3_SUPERMINI
 #define LEDPIN 8
@@ -65,7 +68,7 @@ Several connector options between the Word clock board and the ESP32-C3 and -S3 
 - Send a @ to restart the ESP32.
   If all is well the proper time will be printed after a restart and a IP-address other than 0.0.0.0 will be printed in the info menu.
  
-The following will be printed in the serial terminal of the conected PC via the USB port or in the serial app on your phone.
+The following will be printed in the serial terminal of the connected PC via the USB port or in the serial app on your phone.
 Search in IOS app store for [BLEserial](https://apps.apple.com/nl/app/bleserial-nrf/id1632235163) or [BLEserial Pro](https://apps.apple.com/nl/app/ble-serial-pro/id1632245655)
 and for Android [Bluetooth terminal](https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal&pli=1) 
 
@@ -98,13 +101,12 @@ Software: ESP32C3S3_SerialClockV005.ino
 ___________________________________
 16/06/2024 15:17:44 
 ```
-Look in the source code in the setup() to which GPIO ports the TX and RX lines of the UART 9erial communication are connected
- Serial1.begin(9600, SERIAL_8N1, 5, 4);      // Serial1.begin(9600, SERIAL_8N1, RX1PIN, TX1PIN);
-In this case connect pin 4 of the ESP32 with the RX of the ATMEGA and pin 5 to the TX pin.
-Connect the 5V and GND pins between the ESP32 and the Bluetooth connection pins.
+- Connect the RX, TX, the 5V and GND pins between the ESP32 and the Bluetooth connection pins.
+if an USB-cable is connected to the ESP32 the clock will start working because the 5V power line will feed the ATMEGA chip<br>
+The seconds LED on the Wordclock PCB will start flashing. The LEDs will ofcourse not light up. They need the 12V power supply.
 
-Start the word clock and see in a serial terminal that the time is send every six minutes to the word clock
-
+- Check in a serial terminal time is send every six minutes to the word clock. 
+  If it does not work TX and RX are probably reversed.
 
 ```
 ___________________________________
