@@ -16,7 +16,7 @@ ESP32-C3-supermini -- ESp32-S3-Zero -- Arduino Nano ESP32 -- ESP-C3-!2F-Kit
 
 This code can be used with an ESP32 C3 and S3 and probably other boards.
 
-With a #define in the code a board can be selected before compiling the code for that board.
+With a #define in the code a board can be selected before compiling the code for that board.<br>
 
 ```
 //#define ESP32C3_SUPERMINI   // ESP32-C3-Supermini
@@ -25,19 +25,34 @@ With a #define in the code a board can be selected before compiling the code for
 //#define ESP32S3_DEV         // ESP32-S3
 #define NanoESP32             // Arduino Nano ESP32
 ``` 
-Difference between board are the coding for the LEDs on the board. These LEDs are not essential and can be deleted from the code making the software suitabnle for many boards. These codings can be found in the following two subroutines.
+Difference between board are the coding for the LEDs on the board. These LEDs are not essential and the coding can be  deleted from the code making the software suitable for many boards. These codings can be found in the following two subroutines.
 ```
 void UpdateStatusLEDs(int Toggle)
 void SetStatusLED(int WW, int CW, int Re, int Gr, int Bl)
 ```
-The final version will also be suited for the Arduino nano ESP32. A board that will probably be avaiable for many years after this year 2024
+The final version will also be suited for the Arduino nano ESP32. A board that will probably be avaiable for many years after this year 2024 and my choice to develop further with.
 
+I made some cables to connect the ESP32-super mini and the ESP32-S3 Zero to the Word clock PCB.
+Because the ESP32-Super mini is especially difficult to solder without destroying them I bought the ESP32-S3 Zero with pins welded to it. When you solder the first 5 pins to 5V, GND, 3V3, GPIO4 and GPIO3 from the bottom there are no tiny parts you can destroy while welding.<br>
+
+I was most happy with a M-F connector Dupont cable and five 90 degree pins soldered to the board 
+
+![image](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/0785be7a-b2b1-4e4f-80d8-a79bf15664c5)
+Several connector option between the Word clock board and the ESP32-C3 and -S3 mini boards
 
 # How to use
 - Select the board you use in the source code. (Remove the // before the board that is used)
 - Modify the GPIO pins in the setup() as needed, where the RX and TX pins connect to the word clock.
 ```
- Serial1.begin(9600, SERIAL_8N1, 5, 4);    // Serial1.begin(9600, SERIAL_8N1, RX1PIN, TX1PIN);
+                         #ifdef ESP32C3_SUPERMINI
+#define LEDPIN 8
+#define RX1PIN 4
+#define TX1PIN 3 
+                        #endif //ESP32C3_SUPERMINI
+                        #ifdef NANOESP32 
+#define RX1PIN 4
+#define TX1PIN 3 
+                        #endif //NANOESP32
 ```
 - Connect the board, check the compile options as noted in the top of the source code, compile for the proper board and upload the code
 - Open the serial terminal and **send '?i'**<br>
@@ -64,13 +79,13 @@ Web page started
 IP Address: 192.168.178.156
 NTP is On
 ___________________________________
-A SSID B Password C BLE beacon name
-D Date (D15012021) T Time (T132145)
-E Timezone  (E<-02>2 or E<+01>-1)
-I To print this Info menu
-P Status LED toggle On/Off
-R Reset settings @ = Reset MCU
-W=WIFI  X=NTP& Y=BLE  Z=Fast BLE
+?A SSID B Password C BLE beacon name
+?D Date (D15012021) T Time (T132145)
+?E Timezone  (E<-02>2 or E<+01>-1)
+?I To print this Info menu
+?P Status LED toggle On/Off
+?R Reset settings @ = Reset MCU
+?W=WIFI ? X=NTP& ?Y=BLE  ?Z=Fast BLE
 Ed Nieuwenhuys Jun 2024
 ___________________________________
 SSID: FRITZ!BoxEd
