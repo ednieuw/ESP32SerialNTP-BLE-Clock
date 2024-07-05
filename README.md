@@ -40,7 +40,7 @@ After several prototypes I was most happy with a M-F Dupont cable and five 90 de
 The ESP32-S3 Zero from Waveshare with pins welded to it is a good alternative.<br>
 The ESP32-C3-12F is a robust board I have lying around and has probably a stronger WIFI and BLE.
 
-![image](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/0785be7a-b2b1-4e4f-80d8-a79bf15664c5)
+![image](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/0785be7a-b2b1-4e4f-80d8-a79bf15664c5)<br>
 Several connector options between the Word clock board and the ESP32-C3 and -S3 mini boards
 
 # How to use
