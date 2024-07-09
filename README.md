@@ -5,7 +5,7 @@ Time feed ATMEGA B/W Word clock with NTP time with a ESP32-C3-supermini, ESP32-S
 The word clock with white 2835 or 3528 LEDs runs on an ATMEGA 328 and keeps time in a DS3231 Module.
 See here: https://github.com/ednieuw/Woordklok-witte-LEDs.
 
-This word clock can receive its time with a DCF77 receiver. But this will not work in a clock with brass copper or corten steel word plates, a bad position or interfering radio waves in the neighbourhood.
+This word clock can receive its time with a DCF77 receiver. But this will not work in a clock with brass copper or corten steel word plates, a bad position or interfering radio waves in the neighbourhood.<br>
 ![woordklokCIMG2963](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/ed78be12-9529-405e-b355-75b00a09bf1c)
 
 The ESP32 used will replace the Bluetooth module on the word clock PCB. The ESP32 has Bluetooth and WIFI connectivity adding two new functionalities, namely a web browser page and a NTP time clock that receive time from the internet.
