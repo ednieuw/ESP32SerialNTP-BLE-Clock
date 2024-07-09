@@ -1,5 +1,5 @@
 # ESP32SerialNTP-BLE-Clock
-Time feed ATMEGA B/W Word clock with NTP time with a ESP32-C3-supermini, ESp32-S3-Zero, Arduino Nano ESP32 orESP-C3-!2F-Kit. 
+Time feed ATMEGA B/W Word clock with NTP time with a ESP32-C3-supermini, ESP32-S3-Zero, Arduino Nano ESP32 orESP-C3-12F-Kit. 
 ![ESP32ToWordClock](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/ac6b3e92-fde4-49cc-915b-91af3d018617)
 
 The word clock with white 2835 or 3528 LEDs runs on an ATMEGA 328 and keeps time in a DS3231 Module.
