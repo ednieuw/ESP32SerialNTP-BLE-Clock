@@ -43,6 +43,9 @@ The ESP32-C3-12F is a robust board I have lying around and has probably a strong
 ![image](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/0785be7a-b2b1-4e4f-80d8-a79bf15664c5)<br>
 Several connector options between the Word clock board and the ESP32-C3 and -S3 mini boards
 
+![image](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/071893be-9830-49bd-8023-2304a4e0f016)<br>
+Arduino Nano ESP32 connected via pins Vin, GND, A6 and A7 to the Bluetooth connection on the Word clock PCB
+
 # How to use
 - Select the board you use in the source code. (Remove the // before the board that is used and select only ONE board).
 - The RX and TX pins that are connected to the Word clock and defined here. 
@@ -53,8 +56,8 @@ Several connector options between the Word clock board and the ESP32-C3 and -S3 
 #define TX1PIN 3 
                         #endif //ESP32C3_SUPERMINI
                         #ifdef NANOESP32 
-#define RX1PIN 4
-#define TX1PIN 3 
+#define RX1PIN A6  // 13   Connect to Rx
+#define TX1PIN A7  // 14   Connect to Tx 
                         #endif //NANOESP32
 ```
 - Connect the board, check the compile options as noted in the top of the source code, compile for the proper board and upload the code
