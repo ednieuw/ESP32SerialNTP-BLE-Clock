@@ -44,7 +44,9 @@ The ESP32-C3-12F is a robust board I have lying around and has probably a strong
 Several connector options between the Word clock board and the ESP32-C3 and -S3 mini boards
 
 ![image](https://github.com/ednieuw/ESP32SerialNTP-BLE-Clock/assets/12166816/071893be-9830-49bd-8023-2304a4e0f016)<br>
-Arduino Nano ESP32 connected via pins Vin, GND, A6 and A7 to the Bluetooth connection on the Word clock PCB
+Arduino Nano ESP32 connected via pins 5V, GND, A6 and A7 to the Bluetooth connection on the Word clock PCB.
+
+**A better approach is to connect the Vin of the ESP32 to the 12V input of the PCB. The L7805 becomes very hot when it has to supply the power for the ESP32.**
 
 # How to use
 - Select the board you use in the source code. (Remove the // before the board that is used and select only ONE board).
