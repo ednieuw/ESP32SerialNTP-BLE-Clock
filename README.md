@@ -47,10 +47,16 @@ Several connector options between the Word clock board and the ESP32-C3 and -S3 
 Arduino Nano ESP32 connected via pins 5V, GND, A6 and A7 to the Bluetooth connection on the Word clock PCB.
 
 **A better approach is to connect the Vin of the ESP32 to the 12V input of the PCB. The L7805 becomes very hot when it has to supply the power for the ESP32.**
+![ed](https://github.com/user-attachments/assets/acd258cd-4e8f-4ea7-9029-343bdfb84a0f)<br>
+Connect the Vin and GND to 12 V of the PCB to avoid overheating of the 78L05 voltage regulator.
 
 # How to use
 - Select the board you use in the source code. (Remove the // before the board that is used and select only ONE board).
-- The RX and TX pins that are connected to the Word clock and defined here. 
+- The RX and TX pins that are connected to the Word clock and defined here.
+- Connect de GND pin from the ESP32 to the word clock PCB and the 5V if the ESP32 is powered from the PCB board.
+- **OR better**: Connect the Vin and GND of the ESP32 to the 12V power of the PCB. That will leave TX and RX and GND connected to the Word clock PCB and the 5V not connected.
+  
+  
 ```
                          #ifdef ESP32C3_SUPERMINI
 #define LEDPIN 8
